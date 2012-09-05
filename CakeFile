@@ -1,0 +1,13 @@
+exec = require('child_process').exec
+compile = (t, type = '-c') ->
+    console.log "compile #{t}"
+    exec "coffee #{type} #{t}", (error, stdout, stderr) ->
+        if stdout? and stdout != ''
+            console.log('stdout: ' + stdout)
+        if stderr? and stderr != ''
+            console.log('stderr: ' + stderr)
+        if error? and error != ''
+            console.log('exec error: ' + error);
+
+task 'all', 'compile all coffee', ->
+    compile(['pixiv_bookmark_with_star.user'], '-bc')
