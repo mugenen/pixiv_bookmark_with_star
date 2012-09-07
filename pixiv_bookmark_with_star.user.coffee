@@ -41,7 +41,7 @@ pixiv_bookmark_with_star = ->
     bookmark.href = 'javascript:void 0'
 
     bookmark.addEventListener('click', ->
-        timeout = 150
+        timeout = 50
         
         if not isRated()
             rate()

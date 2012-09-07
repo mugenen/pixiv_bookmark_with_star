@@ -40,7 +40,7 @@ pixiv_bookmark_with_star = function() {
   bookmark.href = 'javascript:void 0';
   return bookmark.addEventListener('click', function() {
     var timeout, timer;
-    timeout = 150;
+    timeout = 50;
     if (!isRated()) {
       rate();
       return timer = setInterval(function() {
