@@ -18,19 +18,11 @@ pixiv_bookmark_with_star = function() {
     return document.URL.match('illust') !== null;
   };
   isRated = function() {
-    if (isIllust()) {
-      return document.querySelector('.rated') !== null;
-    } else {
-      return document.querySelector('#unit .current-rating') !== null;
-    }
+    return document.querySelector('.rated') !== null;
   };
   rate = function() {
     var countup;
-    if (isIllust()) {
-      countup = 'javascript:pixiv.rating.rate = 10;$(".rating").click();';
-    } else {
-      countup = 'javascript:countup_rating(10);';
-    }
+    countup = 'javascript:pixiv.rating.rate = 10;jQuery(".rating").click();';
     return location.href = countup;
   };
   if (isRated()) return;
@@ -39,12 +31,14 @@ pixiv_bookmark_with_star = function() {
   original_href = bookmark.href;
   bookmark.href = 'javascript:void 0';
   return bookmark.addEventListener('click', function() {
-    var timeout, timer;
+    var limit, timeout, timer;
     timeout = 50;
     if (!isRated()) {
       rate();
+      limit = 0;
       return timer = setInterval(function() {
-        if (isRated()) {
+        limit += 1;
+        if (isRated() || limit >= 6) {
           clearInterval(timer);
           return location.href = original_href;
         }

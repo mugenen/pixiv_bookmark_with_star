@@ -16,16 +16,10 @@ pixiv_bookmark_with_star = ->
         document.URL.match('illust') != null
 
     isRated = ->
-        if isIllust()
-            document.querySelector('.rated') != null
-        else
-            document.querySelector('#unit .current-rating') != null
+        document.querySelector('.rated') != null
     
     rate = ->
-        if isIllust()
-            countup = 'javascript:pixiv.rating.rate = 10;$(".rating").click();'
-        else
-            countup = 'javascript:countup_rating(10);'
+        countup = 'javascript:pixiv.rating.rate = 10;jQuery(".rating").click();'
         location.href = countup
 
     if isRated()
@@ -45,8 +39,10 @@ pixiv_bookmark_with_star = ->
         
         if not isRated()
             rate()
+            limit = 0
             timer = setInterval( ->
-                if isRated()
+                limit += 1
+                if isRated() or limit >= 6
                     clearInterval(timer)
                     location.href = original_href
             , timeout)
