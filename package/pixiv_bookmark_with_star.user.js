@@ -26,7 +26,7 @@ pixiv_bookmark_with_star = function() {
     return location.href = countup;
   };
   if (isRated()) return;
-  bookmark = document.querySelector('.bookmark a.ui-button');
+  bookmark = document.querySelector('.bookmark-container a._button');
   if (!(bookmark != null)) return;
   original_href = bookmark.href;
   bookmark.href = 'javascript:void 0';

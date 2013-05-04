@@ -26,7 +26,7 @@ pixiv_bookmark_with_star = ->
         return
 
 
-    bookmark = document.querySelector('.bookmark a.ui-button')
+    bookmark = document.querySelector('.bookmark-container a._button')
 
     if not bookmark?
         return

@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Pixiv Bookmark with Star",
-  "version": "1.3",
+  "version": "1.4",
   "description": "pixivでブックマークするときに同時に10点評価する",
   "icons": 
   {
